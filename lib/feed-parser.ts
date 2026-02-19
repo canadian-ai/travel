@@ -63,16 +63,16 @@ function extractImageFromContent(content: string): string | undefined {
 }
 
 function stripHtml(html: string): string {
-  return html
-    .replace(/<[^>]*>/g, "")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&nbsp;/g, " ")
-    .replace(/\s+/g, " ")
-    .trim()
+  // First decode HTML entities so we can properly strip tags
+  let text = decodeHtmlEntities(html)
+  
+  // Remove all HTML tags
+  text = text.replace(/<[^>]*>/g, " ")
+  
+  // Clean up whitespace
+  text = text.replace(/\s+/g, " ").trim()
+  
+  return text
 }
 
 function parseAtomEntry(entryXml: string, source: FeedSource): FeedEntry | null {

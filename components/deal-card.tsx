@@ -1,4 +1,7 @@
-import { ExternalLink, Clock, MapPin, Plane } from "lucide-react"
+"use client"
+
+import { useState } from "react"
+import { ExternalLink, Clock, MapPin, Plane, ImageOff } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import type { FeedEntry } from "@/lib/feed-parser"
 import { formatDistanceToNow } from "date-fns"
@@ -15,24 +18,49 @@ function getRelativeTime(dateString: string): string {
 
 export function DealCard({ entry }: { entry: FeedEntry }) {
   const relativeTime = getRelativeTime(entry.published || entry.updated)
+  const [imgError, setImgError] = useState(false)
 
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-all hover:border-primary/30 hover:shadow-lg">
-      <div className="flex flex-1 flex-col p-5">
-        <div className="mb-3 flex items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            <Badge
-              variant="secondary"
-              className="bg-primary/10 text-primary hover:bg-primary/20"
-            >
+      {/* Deal image */}
+      {entry.imageUrl && !imgError ? (
+        <div className="relative aspect-[16/9] w-full overflow-hidden bg-muted">
+          <img
+            src={entry.imageUrl}
+            alt={entry.title}
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+            onError={() => setImgError(true)}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-card/60 via-transparent to-transparent" />
+          <div className="absolute left-3 top-3">
+            <Badge className="bg-primary text-primary-foreground shadow-md">
               <Plane className="mr-1 h-3 w-3" />
               {entry.source.airportCode}
             </Badge>
-            <span className="flex items-center gap-1 text-xs text-muted-foreground">
-              <MapPin className="h-3 w-3" />
-              {entry.source.city}
-            </span>
           </div>
+        </div>
+      ) : (
+        <div className="relative flex aspect-[16/9] w-full items-center justify-center bg-muted/50">
+          <div className="flex flex-col items-center gap-2 text-muted-foreground/40">
+            <ImageOff className="h-8 w-8" />
+            <span className="text-xs">{entry.source.city}</span>
+          </div>
+          <div className="absolute left-3 top-3">
+            <Badge className="bg-primary text-primary-foreground shadow-md">
+              <Plane className="mr-1 h-3 w-3" />
+              {entry.source.airportCode}
+            </Badge>
+          </div>
+        </div>
+      )}
+
+      <div className="flex flex-1 flex-col p-5">
+        <div className="mb-3 flex items-center justify-between gap-2">
+          <span className="flex items-center gap-1 text-xs text-muted-foreground">
+            <MapPin className="h-3 w-3" />
+            {entry.source.city}
+          </span>
           {relativeTime && (
             <span className="flex items-center gap-1 text-xs text-muted-foreground">
               <Clock className="h-3 w-3" />

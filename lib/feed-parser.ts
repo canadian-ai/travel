@@ -29,13 +29,33 @@ function extractAttribute(xmlString: string, tagName: string, attrName: string):
   return match ? match[1] : ""
 }
 
+function decodeHtmlEntities(text: string): string {
+  return text
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#xD;/g, "\r")
+    .replace(/&#xA;/g, "\n")
+    .replace(/&nbsp;/g, " ")
+}
+
 function extractImageFromContent(content: string): string | undefined {
-  const imgMatch = content.match(/<img[^>]+src="([^"]+)"/i)
+  // First try on the raw content (already decoded)
+  let imgMatch = content.match(/<img[^>]+src="([^"]+)"/i)
   if (imgMatch) return imgMatch[1]
 
+  // Decode HTML entities and try again (for Atom feeds with encoded HTML content)
+  const decoded = decodeHtmlEntities(content)
+  imgMatch = decoded.match(/<img[^>]+src="([^"]+)"/i)
+  if (imgMatch) return imgMatch[1]
+
+  // Try media:content
   const mediaMatch = content.match(/<media:content[^>]+url="([^"]+)"/i)
   if (mediaMatch) return mediaMatch[1]
 
+  // Try enclosure
   const enclosureMatch = content.match(/<enclosure[^>]+url="([^"]+)"/i)
   if (enclosureMatch) return enclosureMatch[1]
 

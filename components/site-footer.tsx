@@ -79,20 +79,51 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-navy-foreground/10 pt-6 text-center">
-          <p className="text-xs text-navy-foreground/50">
-            {new Date().getFullYear()} Travel Deals by{" "}
-            <a
-              href="https://canadian-ai.ca"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:underline"
-            >
-              canadian-ai.ca
-            </a>
-            . All deal content belongs to its respective source. This site is an aggregator 
-            and provides attribution to all original providers.
-          </p>
+        <div className="mt-10 border-t border-navy-foreground/10 pt-6">
+          <div className="flex flex-col items-center gap-3 text-center">
+            <p className="text-xs text-navy-foreground/50">
+              {new Date().getFullYear()} Travel Deals by{" "}
+              <a
+                href="https://canadian-ai.ca"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                canadian-ai.ca
+              </a>
+              . All deal content belongs to its respective source. This site is an aggregator 
+              and provides attribution to all original providers.
+            </p>
+            <p className="text-xs text-navy-foreground/50">
+              Open source under MIT License.{" "}
+              <a
+                href="https://github.com/canadian-ai/travel"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                View on GitHub
+              </a>
+              {" • "}
+              <a
+                href="https://github.com/canadian-ai/travel/blob/main/LICENSE"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                License
+              </a>
+              {" • "}
+              <a
+                href="https://github.com/canadian-ai/travel/blob/main/CONTRIBUTING.md"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                Contribute
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

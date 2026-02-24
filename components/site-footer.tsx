@@ -115,13 +115,16 @@ export function SiteFooter() {
               </a>
               {" • "}
               <a
-                href="https://github.com/canadian-ai/travel/blob/main/CONTRIBUTING.md"
+                href="https://github.com/canadian-ai/travel/issues"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline"
               >
-                Contribute
+                Report Issues
               </a>
+            </p>
+            <p className="text-xs text-navy-foreground/40">
+              Pull requests are not accepted. Fork the repository to make modifications.
             </p>
           </div>
         </div>

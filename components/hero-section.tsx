@@ -1,52 +1,46 @@
-import { Plane, MapPin, TrendingDown } from "lucide-react"
+import { Plane, MapPin } from "lucide-react"
 
 export function HeroSection({ dealCount }: { dealCount: number }) {
   return (
     <section className="relative overflow-hidden bg-navy text-navy-foreground">
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-20"
+        className="absolute inset-0 bg-cover bg-center opacity-15"
         style={{ backgroundImage: "url(/images/hero-bg.jpg)" }}
         aria-hidden="true"
       />
-      <div className="absolute inset-0 bg-navy/70" aria-hidden="true" />
+      <div className="absolute inset-0 bg-navy/80" aria-hidden="true" />
 
-      <div className="relative mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-24">
+      <div className="relative mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-28">
         <div className="max-w-2xl">
-          <div className="mb-4 flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/20 px-3 py-1 text-xs font-semibold text-primary">
-              <TrendingDown className="h-3.5 w-3.5" />
-              Live Deals
-            </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/20 px-3 py-1 text-xs font-semibold text-accent">
-              <MapPin className="h-3.5 w-3.5" />
-              13 Canadian Cities
-            </span>
-          </div>
-
-          <h1 className="text-balance text-4xl font-bold tracking-tight text-navy-foreground md:text-5xl lg:text-6xl">
-            Canadian Travel Deals,{" "}
-            <span className="text-primary">All in One Place</span>
-          </h1>
-
-          <p className="mt-4 max-w-xl text-pretty text-lg leading-relaxed text-navy-foreground/80 md:text-xl">
-            We aggregate the best flight deals from trusted sources across Canada. 
-            Updated every 15 minutes with {dealCount > 0 ? `${dealCount}+` : "the latest"} deals from 
-            coast to coast.
+          {/* UI Label — Inter, uppercase, tracked */}
+          <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.12em] text-primary">
+            Canadian Travel Deals
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          {/* Display heading — Playfair Display */}
+          <h1 className="text-balance font-serif text-4xl font-bold tracking-[-0.02em] text-navy-foreground md:text-5xl lg:text-6xl">
+            Find Your Next{" "}
+            <span className="text-primary">Adventure.</span>
+          </h1>
+
+          <p className="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-navy-foreground/70">
+            Real-time flight deals from {dealCount > 0 ? `${dealCount}+` : "hundreds of"} listings 
+            across 13 Canadian cities. Every deal attributed to its original source.
+          </p>
+
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
               href="#deals"
-              className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:shadow-xl"
+              className="inline-flex items-center gap-2 bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors duration-150 hover:bg-primary/90"
             >
-              <Plane className="h-4 w-4" />
+              <Plane className="h-4 w-4" strokeWidth={1.5} />
               Browse All Deals
             </a>
             <a
               href="#cities"
-              className="inline-flex items-center gap-2 rounded-lg border border-navy-foreground/20 bg-navy-foreground/10 px-6 py-3 text-sm font-semibold text-navy-foreground transition-all hover:bg-navy-foreground/20"
+              className="inline-flex items-center gap-2 border border-navy-foreground/30 px-6 py-3 text-sm font-medium text-navy-foreground transition-colors duration-150 hover:border-navy-foreground/60 hover:bg-navy-foreground/10"
             >
-              <MapPin className="h-4 w-4" />
+              <MapPin className="h-4 w-4" strokeWidth={1.5} />
               Filter by City
             </a>
           </div>

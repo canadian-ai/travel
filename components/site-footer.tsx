@@ -8,13 +8,17 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
         <div className="grid gap-8 md:grid-cols-3">
           <div>
-            <div className="mb-4 flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-                <Plane className="h-5 w-5 text-primary-foreground" />
+            <div className="mb-4 flex items-center gap-2">
+              <div className="flex h-8 w-8 items-center justify-center bg-primary">
+                <Plane className="h-4 w-4 text-primary-foreground" strokeWidth={1.5} />
               </div>
-              <div>
-                <p className="text-base font-bold text-navy-foreground">Travel Deals</p>
-                <p className="text-xs text-navy-foreground/60">canadian-ai.ca</p>
+              <div className="flex items-baseline gap-1.5">
+                <span className="font-serif text-xl font-bold leading-none tracking-[-0.02em] text-navy-foreground">
+                  Travel
+                </span>
+                <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-primary">
+                  Deals
+                </span>
               </div>
             </div>
             <p className="text-sm leading-relaxed text-navy-foreground/70">
@@ -25,9 +29,9 @@ export function SiteFooter() {
           </div>
 
           <div>
-            <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-navy-foreground/80">
+            <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.12em] text-navy-foreground/50">
               Deal Sources
-            </h3>
+            </p>
             <ul className="grid grid-cols-2 gap-1.5">
               {FEED_SOURCES.map((source) => (
                 <li key={source.id}>
@@ -35,7 +39,7 @@ export function SiteFooter() {
                     href={source.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-navy-foreground/60 transition-colors hover:text-primary"
+                    className="text-sm text-navy-foreground/60 transition-colors duration-150 hover:text-primary"
                   >
                     {source.name}
                   </a>
@@ -45,32 +49,31 @@ export function SiteFooter() {
           </div>
 
           <div>
-            <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-navy-foreground/80">
+            <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.12em] text-navy-foreground/50">
               About This Site
-            </h3>
-            <p className="text-sm leading-relaxed text-navy-foreground/70">
-              This is a deal aggregation service. We do not create or modify deal content. 
-              All deals remain the property of their original sources and are displayed 
-              with full attribution. Visit the original source for the most up-to-date 
-              information on any deal.
             </p>
-            <div className="mt-4">
-              <h3 className="mb-2 text-sm font-semibold uppercase tracking-wider text-navy-foreground/80">
+            <p className="text-sm leading-relaxed text-navy-foreground/60">
+              A deal aggregation service. We do not create or modify deal content. 
+              All deals remain the property of their original sources and are displayed 
+              with full attribution.
+            </p>
+            <div className="mt-6">
+              <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.12em] text-navy-foreground/50">
                 Navigation
-              </h3>
+              </p>
               <ul className="flex flex-col gap-1.5">
                 <li>
-                  <Link href="/" className="text-sm text-navy-foreground/60 transition-colors hover:text-primary">
+                  <Link href="/" className="text-sm text-navy-foreground/60 transition-colors duration-150 hover:text-primary">
                     Home
                   </Link>
                 </li>
                 <li>
-                  <a href="#deals" className="text-sm text-navy-foreground/60 transition-colors hover:text-primary">
+                  <a href="#deals" className="text-sm text-navy-foreground/60 transition-colors duration-150 hover:text-primary">
                     All Deals
                   </a>
                 </li>
                 <li>
-                  <a href="#cities" className="text-sm text-navy-foreground/60 transition-colors hover:text-primary">
+                  <a href="#cities" className="text-sm text-navy-foreground/60 transition-colors duration-150 hover:text-primary">
                     Filter by City
                   </a>
                 </li>

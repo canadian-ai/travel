@@ -132,28 +132,28 @@ This project aggregates travel deals from the following independent Canadian dea
 
 ---
 
-## Open Source & Contributing
+## Open Source Project
 
-This project is **100% open source** under the MIT License. We welcome contributions from the community!
+This project is **100% open source** under the MIT License. The codebase is freely available for learning, forking, and modification.
 
-### How to Contribute
+### Contribution Policy
 
-1. **Fork the repository** on GitHub
-2. **Create a feature branch** (`git checkout -b feature/amazing-feature`)
-3. **Commit your changes** (`git commit -m 'Add amazing feature'`)
-4. **Push to the branch** (`git push origin feature/amazing-feature`)
-5. **Open a Pull Request**
+**Pull requests are not accepted for this repository.** However, we welcome community engagement through:
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed guidelines.
+- **Issues** — Report bugs, suggest features, or ask questions by opening GitHub issues
+- **Forks** — Feel free to fork this repository and create your own version with modifications
+- **Discussions** — Share ideas and engage with the community in GitHub Discussions
 
-### Ways to Contribute
+### Making Modifications
 
-- 🐛 **Report bugs** — Open an issue with details and reproduction steps
-- 💡 **Suggest features** — Share your ideas for improvements
-- 📝 **Improve documentation** — Help us make the docs clearer
-- 🎨 **Design improvements** — UI/UX enhancements are always welcome
-- 🔧 **Add feed sources** — Help us include more Canadian cities
-- 🧪 **Write tests** — Improve code quality and reliability
+If you'd like to propose changes or enhancements:
+
+1. **Fork the repository** to your own GitHub account
+2. **Make your changes** in your fork
+3. **Open an issue** in the original repository describing your modifications and linking to your fork
+4. The maintainers will review your fork and may incorporate ideas in future updates
+
+This approach allows the community to experiment and innovate while keeping the main repository focused and maintainable.
 
 ---
 

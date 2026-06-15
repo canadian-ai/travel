@@ -1,8 +1,6 @@
 "use client"
 
 import { FEED_SOURCES, PROVINCES } from "@/lib/feed-sources"
-import { Badge } from "@/components/ui/badge"
-import { MapPin } from "lucide-react"
 
 interface CityFilterProps {
   selectedCity: string | null
@@ -17,18 +15,17 @@ export function CityFilter({ selectedCity, onCityChange }: CityFilterProps) {
 
   return (
     <section id="cities" className="scroll-mt-20">
-      <div className="mb-4 flex items-center gap-2">
-        <MapPin className="h-5 w-5 text-primary" />
-        <h2 className="text-lg font-semibold text-foreground">Filter by City</h2>
-      </div>
+      <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+        Filter by City
+      </p>
 
       <div className="flex flex-wrap gap-2">
         <button
           onClick={() => onCityChange(null)}
-          className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-all ${
+          className={`border px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.08em] transition-colors duration-150 ${
             selectedCity === null
-              ? "border-primary bg-primary text-primary-foreground shadow-sm"
-              : "border-border bg-card text-muted-foreground hover:border-primary/40 hover:text-foreground"
+              ? "border-foreground bg-foreground text-card"
+              : "border-border bg-card text-muted-foreground hover:border-foreground/40 hover:text-foreground"
           }`}
         >
           All Cities
@@ -40,16 +37,14 @@ export function CityFilter({ selectedCity, onCityChange }: CityFilterProps) {
               <button
                 key={source.id}
                 onClick={() => onCityChange(source.id === selectedCity ? null : source.id)}
-                className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-all ${
+                className={`inline-flex items-center gap-1.5 border px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.08em] transition-colors duration-150 ${
                   selectedCity === source.id
-                    ? "border-primary bg-primary text-primary-foreground shadow-sm"
-                    : "border-border bg-card text-muted-foreground hover:border-primary/40 hover:text-foreground"
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border bg-card text-muted-foreground hover:border-foreground/40 hover:text-foreground"
                 }`}
               >
-                <Badge variant="outline" className="h-5 px-1.5 text-[10px] font-bold">
-                  {source.airportCode}
-                </Badge>
-                {source.city}
+                <span className="font-bold">{source.airportCode}</span>
+                <span className="hidden sm:inline">{source.city}</span>
               </button>
             ))}
           </div>

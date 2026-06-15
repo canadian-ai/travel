@@ -4,7 +4,6 @@ import { useState, useMemo } from "react"
 import { DealCard } from "@/components/deal-card"
 import { CityFilter } from "@/components/city-filter"
 import { SearchBar } from "@/components/search-bar"
-import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Inbox, RefreshCw, ChevronDown } from "lucide-react"
 import type { FeedEntry } from "@/lib/feed-parser"
@@ -71,44 +70,40 @@ export function DealGrid({ initialEntries }: { initialEntries: FeedEntry[] }) {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <SearchBar value={searchQuery} onChange={setSearchQuery} />
           <div className="flex items-center gap-3">
-            <span className="text-sm text-muted-foreground">
-              {filteredEntries.length} deal{filteredEntries.length !== 1 ? "s" : ""} found
+            <span className="text-[11px] font-medium uppercase tracking-[0.08em] text-muted-foreground">
+              {filteredEntries.length} deal{filteredEntries.length !== 1 ? "s" : ""}
             </span>
-            <Button
-              variant="outline"
-              size="sm"
+            <button
               onClick={handleRefresh}
               disabled={isRefreshing}
-              className="gap-1.5"
+              className="flex items-center gap-1.5 border border-border bg-card px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.08em] text-foreground transition-colors duration-150 hover:bg-secondary disabled:opacity-50"
             >
-              <RefreshCw className={`h-3.5 w-3.5 ${isRefreshing ? "animate-spin" : ""}`} />
+              <RefreshCw className={`h-3 w-3 ${isRefreshing ? "animate-spin" : ""}`} strokeWidth={1.5} />
               Refresh
-            </Button>
+            </button>
           </div>
         </div>
       </div>
 
       {filteredEntries.length === 0 ? (
-        <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-border bg-card py-16">
-          <Inbox className="mb-3 h-10 w-10 text-muted-foreground/50" />
-          <p className="text-base font-medium text-foreground">No deals found</p>
+        <div className="flex flex-col items-center justify-center border border-dashed border-border bg-card py-16">
+          <Inbox className="mb-3 h-10 w-10 text-muted-foreground/40" strokeWidth={1.5} />
+          <p className="font-serif text-lg font-bold text-foreground">No deals found</p>
           <p className="mt-1 text-sm text-muted-foreground">
             {searchQuery
               ? "Try adjusting your search terms"
               : "Try selecting a different city or check back later"}
           </p>
           {(searchQuery || selectedCity) && (
-            <Button
-              variant="outline"
-              size="sm"
-              className="mt-4"
+            <button
+              className="mt-4 border border-border px-4 py-2 text-[11px] font-medium uppercase tracking-[0.08em] text-foreground transition-colors duration-150 hover:bg-secondary"
               onClick={() => {
                 setSearchQuery("")
                 setSelectedCity(null)
               }}
             >
               Clear Filters
-            </Button>
+            </button>
           )}
         </div>
       ) : (
@@ -121,15 +116,13 @@ export function DealGrid({ initialEntries }: { initialEntries: FeedEntry[] }) {
 
           {hasMore && (
             <div className="mt-8 flex justify-center">
-              <Button
-                variant="outline"
-                size="lg"
+              <button
                 onClick={() => setVisibleCount((prev) => prev + DEALS_PER_PAGE)}
-                className="gap-2"
+                className="flex items-center gap-2 border border-border bg-card px-6 py-3 text-[11px] font-medium uppercase tracking-[0.08em] text-foreground transition-colors duration-150 hover:bg-secondary"
               >
-                <ChevronDown className="h-4 w-4" />
-                Load More Deals ({filteredEntries.length - visibleCount} remaining)
-              </Button>
+                <ChevronDown className="h-4 w-4" strokeWidth={1.5} />
+                Load More — {filteredEntries.length - visibleCount} remaining
+              </button>
             </div>
           )}
         </>

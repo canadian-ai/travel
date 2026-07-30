@@ -147,3 +147,13 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* MFE mode — overridden by MfeTheme reading host CSS vars, but these
+   ensure a clean fallback when cross-origin blocks parent style access */
+[data-mfe] body {
+  background-color: transparent;
+}
+[data-mfe] .site-header,
+[data-mfe] .site-footer {
+  display: none;
+}

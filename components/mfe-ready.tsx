@@ -2,7 +2,8 @@
 import { useEffect } from "react"
 export function MfeReady() {
   useEffect(() => {
-    window.parent.postMessage({ type: "CAI_MFE_READY", appId: "travel", 
+    if (typeof window === "undefined" || window === window.parent) return
+    window.parent.postMessage({ type: "CAI_MFE_READY", appId: "travel" }, "*")
   }, [])
   return null
 }

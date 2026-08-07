@@ -3,6 +3,7 @@ import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { MfeReady } from "@/components/mfe-ready"
 import { MfeTheme } from "@/components/mfe-theme"
+import { MfeThemeListener } from "@/components/mfe-theme-listener"
 import "./globals.css"
 
 const inter = Inter({
@@ -127,6 +128,7 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         {children}
         <MfeTheme />
+        <MfeThemeListener />
         <MfeReady />
         <Analytics />
       </body>
